@@ -1,0 +1,3274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Al Fouzan Glass &amp; Aluminium</title>
+  <meta name="description" content="An atelier of glaziers and metalworkers crafting facades, interiors and bespoke installations across the UAE since 2008." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+/* Al Fouzan Glass & Aluminium — light-mode editorial site */
+
+:root {
+  /* Light editorial palette */
+  --bone: #F4EFE6;          /* main background */
+  --bone-warm: #EDE5D4;     /* warmer alt */
+  --paper: #FBF8F2;         /* lightest */
+  --ink: #1A1612;           /* primary text */
+  --ink-soft: #4A4138;      /* secondary text */
+  --ink-mute: #7A6F62;      /* tertiary */
+  --gold: #B8956A;
+  --gold-deep: #8B6F4D;
+  --gold-bright: #D4B383;
+  --line: rgba(26, 22, 18, 0.14);
+  --line-soft: rgba(26, 22, 18, 0.08);
+  --rule: rgba(26, 22, 18, 0.85);
+
+  --serif: 'Cormorant Garamond', 'Cormorant', Georgia, serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--bone);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+img { display: block; max-width: 100%; }
+
+::selection { background: var(--gold); color: var(--ink); }
+
+/* Subtle paper texture overlay */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image:
+    radial-gradient(circle at 25% 30%, rgba(184, 149, 106, 0.04) 0px, transparent 60%),
+    radial-gradient(circle at 75% 70%, rgba(184, 149, 106, 0.04) 0px, transparent 60%);
+  mix-blend-mode: multiply;
+}
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.35;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 3px,
+      rgba(26, 22, 18, 0.012) 3px,
+      rgba(26, 22, 18, 0.012) 4px
+    );
+  mix-blend-mode: multiply;
+}
+
+#root { position: relative; z-index: 2; }
+
+/* ============== TYPOGRAPHY ============== */
+.serif { font-family: var(--serif); font-weight: 300; letter-spacing: -0.01em; }
+.mono {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+}
+
+h1, h2, h3 { font-family: var(--serif); font-weight: 300; letter-spacing: -0.025em; line-height: 1.0; }
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.eyebrow::before {
+  content: ''; width: 32px; height: 1px;
+  background: var(--gold-deep);
+}
+
+/* ============== LAYOUT ============== */
+.shell { max-width: 1440px; margin: 0 auto; padding: 0 56px; }
+@media (max-width: 720px) { .shell { padding: 0 24px; } }
+
+/* ============== TICKER (top of page) ============== */
+.top-ticker {
+  position: relative; z-index: 60;
+  background: var(--ink);
+  color: var(--bone);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 10px 0;
+  overflow: hidden;
+  border-bottom: 1px solid var(--ink);
+}
+.top-ticker-track {
+  display: flex; gap: 56px;
+  white-space: nowrap;
+  animation: ticker 60s linear infinite;
+}
+.top-ticker-track span {
+  display: inline-flex; align-items: center; gap: 56px;
+}
+.top-ticker .dot {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--gold);
+  display: inline-block;
+}
+.top-ticker .gold { color: var(--gold-bright); }
+@keyframes ticker {
+  to { transform: translateX(calc(-50% - 28px)); }
+}
+
+/* ============== NAV ============== */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 56px;
+  background: rgba(244, 239, 230, 0.78);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border-bottom: 1px solid var(--line-soft);
+  transition: padding 0.4s var(--ease-out);
+}
+.nav.scrolled { padding: 14px 56px; }
+@media (max-width: 720px) { .nav, .nav.scrolled { padding-left: 24px; padding-right: 24px; } }
+
+.brand {
+  display: flex; align-items: center;
+  cursor: pointer;
+  padding: 4px 2px;
+  transition: opacity 0.3s var(--ease-out);
+}
+.brand:hover { opacity: 0.7; }
+.brand-text {
+  display: flex; flex-direction: column;
+  align-items: center;
+  line-height: 1;
+  gap: 6px;
+}
+.brand-name {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  line-height: 1;
+}
+.brand-divider {
+  width: 100%; height: 1px;
+  background: var(--gold-deep);
+  align-self: stretch;
+}
+.brand-sub {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  line-height: 1;
+}
+@media (max-width: 720px) {
+  .brand-name { font-size: 17px; }
+  .brand-sub { font-size: 8px; }
+}
+
+.nav-links {
+  display: flex; align-items: center; gap: 4px;
+}
+.nav-link {
+  position: relative;
+  font-size: 13px; font-weight: 400;
+  padding: 10px 16px;
+  letter-spacing: 0.01em;
+  color: var(--ink-soft);
+  transition: color 0.3s var(--ease-out);
+}
+.nav-link:hover { color: var(--ink); }
+.nav-link.active { color: var(--ink); }
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 4px; left: 16px; right: 16px;
+  height: 1px; background: var(--gold-deep);
+}
+
+.nav-wa {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 11px 18px 11px 14px;
+  border-radius: 999px;
+  background: #25D366;
+  color: #0E0E0C;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: all 0.3s var(--ease-out);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+}
+.nav-wa:hover { background: #1da851; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35); }
+.wa-pulse {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #0E0E0C;
+  position: relative;
+}
+.wa-pulse::after {
+  content: ''; position: absolute; inset: 0;
+  border-radius: 50%; background: #0E0E0C;
+  animation: wa-ping 2s ease-out infinite;
+}
+@keyframes wa-ping {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+@media (max-width: 720px) {
+  .nav-links { display: none; }
+  .nav-wa .wa-text { display: none; }
+  .nav-wa { padding: 11px 14px; }
+}
+
+/* ============== FLOATING WHATSAPP ============== */
+.floating-wa {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  z-index: 90;
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: #25D366;
+  color: #0E0E0C;
+  display: grid; place-items: center;
+  box-shadow: 0 14px 40px rgba(37,211,102,0.4), 0 4px 14px rgba(0,0,0,0.15);
+  transition: transform 0.3s var(--ease-out);
+}
+.floating-wa:hover { transform: scale(1.08); }
+.floating-wa-pulse {
+  position: absolute; inset: -6px;
+  border-radius: 50%;
+  background: rgba(37,211,102,0.4);
+  animation: wa-ping 2.4s ease-out infinite;
+  z-index: -1;
+}
+@media (max-width: 720px) { .floating-wa { width: 52px; height: 52px; bottom: 20px; right: 20px; } }
+
+/* ============== BUTTONS ============== */
+.btn {
+  position: relative;
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 16px 24px;
+  font-size: 12px; letter-spacing: 0.06em;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: transparent;
+  overflow: hidden;
+  transition: color 0.4s var(--ease-out), border-color 0.4s var(--ease-out);
+  cursor: pointer;
+}
+.btn::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--ink);
+  transform: translateY(101%);
+  transition: transform 0.5s var(--ease-emphasis);
+  z-index: 0;
+}
+.btn > * { position: relative; z-index: 1; }
+.btn:hover { color: var(--bone); }
+.btn:hover::before { transform: translateY(0); }
+.btn .arrow { transition: transform 0.4s var(--ease-out); }
+.btn:hover .arrow { transform: translate(3px, -3px); }
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--bone);
+}
+.btn-primary::before { background: var(--gold-deep); }
+.btn-primary:hover { color: var(--bone); border-color: var(--gold-deep); }
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--ink);
+  border-color: var(--gold);
+}
+.btn-gold::before { background: var(--gold-deep); }
+.btn-gold:hover { color: var(--bone); border-color: var(--gold-deep); }
+
+.btn-wa {
+  background: #25D366;
+  color: #0E0E0C;
+  border-color: #25D366;
+  font-weight: 500;
+}
+.btn-wa::before { background: #1da851; }
+.btn-wa:hover { color: #fff; border-color: #1da851; }
+
+/* ============== HOME HERO ============== */
+.home-hero {
+  position: relative;
+  padding: 64px 56px 80px;
+  overflow: hidden;
+  background: var(--bone);
+}
+
+/* big cropped marker number — editorial flourish */
+.hero-edition {
+  position: absolute;
+  top: 80px; right: 56px;
+  font-family: var(--serif);
+  font-size: clamp(120px, 18vw, 280px);
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(184, 149, 106, 0.18);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.home-hero-meta {
+  position: relative; z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: end;
+  padding-bottom: 28px;
+  margin-bottom: 56px;
+  border-bottom: 1px solid var(--ink);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.home-hero-meta .right { text-align: right; }
+.home-hero-meta .center { text-align: center; }
+.home-hero-meta .v {
+  display: block;
+  font-family: var(--serif);
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--ink);
+  font-style: italic;
+  margin-top: 4px;
+}
+
+.home-hero-stage {
+  position: relative; z-index: 2;
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: 64px;
+  align-items: end;
+}
+
+.hero-headline {
+  font-family: var(--serif);
+  font-size: clamp(64px, 11vw, 184px);
+  line-height: 0.86;
+  letter-spacing: -0.04em;
+  font-weight: 300;
+  color: var(--ink);
+}
+.hero-headline .ln { display: block; overflow: hidden; }
+.hero-headline .ln > span {
+  display: inline-block;
+  transform: translateY(110%);
+  animation: line-up 1.2s var(--ease-emphasis) forwards;
+}
+.hero-headline .ln:nth-child(1) > span { animation-delay: 0.1s; }
+.hero-headline .ln:nth-child(2) > span { animation-delay: 0.22s; }
+.hero-headline .ln:nth-child(3) > span { animation-delay: 0.34s; }
+.hero-headline em {
+  font-style: italic;
+  color: var(--gold-deep);
+}
+.hero-headline .underline {
+  position: relative;
+  display: inline-block;
+}
+.hero-headline .underline::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 0.06em;
+  height: 0.06em;
+  background: var(--gold);
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: line-grow 1.2s var(--ease-emphasis) 1s forwards;
+}
+@keyframes line-up { to { transform: translateY(0); } }
+@keyframes line-grow { to { transform: scaleX(1); } }
+
+/* Hero photo cluster */
+.hero-cluster {
+  position: relative;
+  height: 540px;
+  width: 100%;
+}
+.hc-frame {
+  position: absolute;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--bone-warm);
+  box-shadow: 0 30px 70px -30px rgba(26, 22, 18, 0.25), 0 4px 12px rgba(26, 22, 18, 0.06);
+  opacity: 0;
+  animation: cluster-in 1.2s var(--ease-emphasis) forwards;
+}
+.hc-frame.f1 {
+  inset: 0 12% 35% 0;
+  animation-delay: 0.55s;
+}
+.hc-frame.f2 {
+  inset: 35% 0 0 32%;
+  animation-delay: 0.85s;
+}
+.hc-frame.f3 {
+  width: 110px; height: 130px;
+  bottom: 60%;
+  right: 0;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 14px;
+  display: grid; place-items: center;
+  text-align: center;
+  animation-delay: 1.15s;
+  box-shadow: 0 14px 30px -10px rgba(26, 22, 18, 0.18);
+}
+@keyframes cluster-in {
+  from { opacity: 0; transform: translateY(30px) scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+.hc-frame img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: contrast(1.04) saturate(0.95);
+  animation: drift 18s ease-in-out infinite alternate;
+}
+.hc-frame.f2 img { animation-delay: -6s; }
+@keyframes drift {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+.hc-stamp {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.hc-stamp .num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--gold-deep);
+  letter-spacing: -0.02em;
+  text-transform: none;
+  display: block;
+  margin: 4px 0 6px;
+}
+
+.hc-tag {
+  position: absolute;
+  bottom: 16px; left: 16px;
+  background: rgba(244, 239, 230, 0.92);
+  backdrop-filter: blur(8px);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.hc-tag .gold { color: var(--gold-deep); }
+
+.home-hero-bottom {
+  position: relative; z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 64px;
+  margin-top: 64px;
+  padding-top: 28px;
+  border-top: 1px solid var(--ink);
+  align-items: start;
+}
+.home-hero-lede {
+  font-family: var(--serif);
+  font-size: clamp(20px, 1.5vw, 26px);
+  line-height: 1.32;
+  font-weight: 300;
+  max-width: 480px;
+  color: var(--ink-soft);
+  opacity: 0;
+  animation: fade-up 1s var(--ease-out) 1.2s forwards;
+}
+.home-hero-actions {
+  display: flex; gap: 12px; flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-end;
+  opacity: 0;
+  animation: fade-up 1s var(--ease-out) 1.4s forwards;
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1000px) {
+  .home-hero-stage { grid-template-columns: 1fr; gap: 40px; }
+  .hero-cluster { height: 420px; }
+  .home-hero-bottom { grid-template-columns: 1fr; gap: 24px; }
+  .home-hero-actions { justify-content: flex-start; }
+}
+@media (max-width: 720px) {
+  .home-hero { padding: 40px 24px 60px; }
+  .hero-cluster { height: 360px; }
+  .hero-edition { right: 16px; top: 50px; }
+  .home-hero-meta { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .home-hero-meta .center { display: none; }
+}
+
+/* ============== MARQUEE ============== */
+.marquee {
+  overflow: hidden;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 28px 0;
+  background: var(--bone-warm);
+}
+.marquee-track {
+  display: flex;
+  gap: 64px;
+  white-space: nowrap;
+  animation: marquee 36s linear infinite;
+  font-family: var(--serif);
+  font-size: clamp(40px, 5vw, 80px);
+  font-weight: 300;
+}
+.marquee-track span {
+  display: inline-flex; align-items: center; gap: 64px;
+}
+.marquee-track .dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--gold);
+  display: inline-block;
+}
+.marquee-track .ital { font-style: italic; color: var(--gold-deep); }
+@keyframes marquee {
+  to { transform: translateX(calc(-50% - 32px)); }
+}
+
+/* ============== SECTIONS ============== */
+section { position: relative; padding: 110px 0; }
+.sec-tight { padding: 88px 0; }
+@media (max-width: 720px) { section { padding: 72px 0; } .sec-tight { padding: 56px 0; } }
+
+.section-head {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 64px;
+  margin-bottom: 56px;
+  align-items: end;
+}
+.section-head h2 {
+  font-size: clamp(40px, 5.5vw, 80px);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+}
+.section-head h2 em {
+  font-style: italic;
+  color: var(--gold-deep);
+}
+.section-head .lead {
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 1.4;
+  font-weight: 300;
+  color: var(--ink-soft);
+  max-width: 600px;
+}
+@media (max-width: 900px) { .section-head { grid-template-columns: 1fr; gap: 24px; } }
+
+/* ============== REVEAL ============== */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+.reveal-delay-3 { transition-delay: 0.24s; }
+
+/* ============== FEATURE STRIP (philosophy) ============== */
+.philosophy {
+  background: var(--ink);
+  color: var(--bone);
+  padding: 130px 0;
+  position: relative;
+  overflow: hidden;
+}
+.philosophy::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(184, 149, 106, 0.15), transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(184, 149, 106, 0.08), transparent 50%);
+}
+.philosophy .shell { position: relative; }
+.phil-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.phil-quote {
+  font-family: var(--serif);
+  font-size: clamp(40px, 4.5vw, 68px);
+  line-height: 1.05;
+  font-weight: 300;
+  letter-spacing: -0.025em;
+}
+.phil-quote em { font-style: italic; color: var(--gold-bright); }
+.phil-side {
+  padding-top: 8px;
+}
+.phil-side .eyebrow { color: var(--gold-bright); }
+.phil-side .eyebrow::before { background: var(--gold-bright); }
+.phil-side p {
+  font-family: var(--serif);
+  font-size: 19px;
+  line-height: 1.55;
+  color: rgba(244, 239, 230, 0.78);
+  margin-top: 20px;
+}
+@media (max-width: 900px) { .phil-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+/* ============== STATS ROW ============== */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+.stat {
+  padding: 40px 32px;
+  border-right: 1px solid var(--line);
+  position: relative;
+  background: var(--bone);
+  transition: background 0.4s var(--ease-out);
+}
+.stat:last-child { border-right: 0; }
+.stat:hover { background: var(--bone-warm); }
+.stat .num {
+  font-family: var(--serif);
+  font-size: clamp(48px, 5vw, 80px);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  color: var(--gold-deep);
+  line-height: 1;
+  font-style: italic;
+}
+.stat .num .plus { font-size: 0.5em; opacity: 0.7; vertical-align: top; font-style: normal; }
+.stat .label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 16px;
+}
+@media (max-width: 720px) {
+  .stats { grid-template-columns: 1fr 1fr; }
+  .stat:nth-child(2) { border-right: 0; }
+  .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid var(--line); }
+}
+
+/* ============== SERVICES INDEX (newspaper-style) ============== */
+.svc-index {
+  border-top: 1px solid var(--ink);
+}
+.svc-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 1.4fr auto;
+  gap: 32px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  transition: padding 0.4s var(--ease-out);
+}
+.svc-row:hover { padding-left: 16px; padding-right: 16px; }
+.svc-row::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(184, 149, 106, 0.07), transparent);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-out);
+  pointer-events: none;
+}
+.svc-row:hover::before { opacity: 1; }
+.svc-row .num {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--gold-deep);
+}
+.svc-row .name {
+  font-family: var(--serif);
+  font-size: clamp(26px, 2.5vw, 38px);
+  font-weight: 300;
+  letter-spacing: -0.015em;
+  transition: color 0.4s var(--ease-out);
+}
+.svc-row:hover .name { color: var(--gold-deep); }
+.svc-row .name em { font-style: italic; color: var(--gold-deep); }
+.svc-row .desc {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.svc-row .arrow {
+  width: 44px; height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--bone);
+  transition: all 0.4s var(--ease-out);
+}
+.svc-row:hover .arrow {
+  background: var(--ink);
+  color: var(--bone);
+  border-color: var(--ink);
+  transform: rotate(-45deg);
+}
+@media (max-width: 900px) {
+  .svc-row { grid-template-columns: 40px 1fr auto; }
+  .svc-row .desc { display: none; }
+}
+
+/* ============== PROJECTS ============== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+.project-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  cursor: pointer;
+  background: var(--bone-warm);
+  aspect-ratio: 4 / 5;
+}
+.project-card.span-6 { grid-column: span 6; }
+.project-card.span-7 { grid-column: span 7; }
+.project-card.span-5 { grid-column: span 5; aspect-ratio: 4 / 5; }
+.project-card.span-4 { grid-column: span 4; aspect-ratio: 3 / 4; }
+.project-card.span-8 { grid-column: span 8; aspect-ratio: 16 / 10; }
+.project-card.span-12 { grid-column: span 12; aspect-ratio: 16 / 7; }
+@media (max-width: 900px) {
+  .project-card.span-5, .project-card.span-6, .project-card.span-7,
+  .project-card.span-4, .project-card.span-8, .project-card.span-12 { grid-column: span 12; }
+}
+.project-img {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  transition: transform 1.4s var(--ease-out), filter 0.6s var(--ease-out);
+  filter: contrast(1.03) saturate(0.92);
+}
+.project-card:hover .project-img { transform: scale(1.06); }
+.project-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(26,22,18,0.85) 100%);
+  opacity: 0.85;
+  transition: opacity 0.5s var(--ease-out);
+}
+.project-card:hover .project-overlay { opacity: 0.95; }
+.project-info {
+  position: absolute; bottom: 28px; left: 28px; right: 28px;
+  display: flex; justify-content: space-between; align-items: end;
+  color: var(--bone);
+}
+.project-info .title {
+  font-family: var(--serif); font-size: 28px; font-weight: 300;
+  letter-spacing: -0.015em;
+  margin-bottom: 6px;
+}
+.project-info .meta {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  opacity: 0.75;
+}
+.project-info .tag {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 6px 12px;
+  border: 1px solid rgba(244,239,230,0.4);
+  border-radius: 999px;
+  background: rgba(26,22,18,0.4);
+  backdrop-filter: blur(8px);
+}
+
+/* ============== PROCESS — RAIL ============== */
+.process-rail {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.process-rail::before {
+  content: '';
+  position: absolute;
+  top: 36px; left: 32px; right: 32px;
+  height: 1px;
+  background: var(--line);
+}
+.proc-step {
+  position: relative;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 36px 28px 32px;
+  transition: transform 0.4s var(--ease-out), border-color 0.4s var(--ease-out), background 0.4s;
+}
+.proc-step:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+  background: var(--paper);
+  box-shadow: 0 20px 50px -20px rgba(26, 22, 18, 0.18);
+}
+.proc-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--bone);
+  border: 1px solid var(--ink);
+  position: relative;
+  margin-bottom: 20px;
+}
+.proc-step:hover .proc-dot { background: var(--gold-deep); border-color: var(--gold-deep); }
+.proc-num {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.18em; color: var(--gold-deep);
+  margin-bottom: 10px;
+}
+.proc-step h3 {
+  font-size: 28px;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+.proc-step h3 em { font-style: italic; color: var(--gold-deep); }
+.proc-step p {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+@media (max-width: 900px) {
+  .process-rail { grid-template-columns: 1fr 1fr; }
+  .process-rail::before { display: none; }
+}
+@media (max-width: 540px) {
+  .process-rail { grid-template-columns: 1fr; }
+}
+
+/* ============== REVIEWS ============== */
+.reviews-head {
+  display: flex; justify-content: space-between; align-items: end;
+  margin-bottom: 56px;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.google-card {
+  display: flex; align-items: center; gap: 18px;
+  padding: 14px 22px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+.google-card .gicon {
+  width: 28px; height: 28px;
+  display: grid; place-items: center;
+}
+.google-card .stars { display: flex; gap: 2px; color: var(--gold); }
+.google-card .rate {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.google-card .lbl {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.review-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 28px;
+  display: flex; flex-direction: column; gap: 18px;
+  transition: transform 0.4s var(--ease-out), border-color 0.4s var(--ease-out);
+  position: relative;
+}
+.review-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+}
+.review-card .stars { display: flex; gap: 3px; color: var(--gold); }
+.review-quote {
+  position: absolute;
+  top: 14px; right: 22px;
+  font-family: var(--serif); font-size: 64px; font-style: italic;
+  color: rgba(184, 149, 106, 0.18);
+  line-height: 1;
+}
+.review-text {
+  font-family: var(--serif);
+  font-size: 17px; line-height: 1.4;
+  font-weight: 300;
+  color: var(--ink-soft);
+  flex: 1;
+}
+.review-author { display: flex; gap: 12px; align-items: center; padding-top: 14px; border-top: 1px solid var(--line); }
+.review-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-bright), var(--gold-deep));
+  color: var(--bone);
+  display: grid; place-items: center;
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+}
+.review-name { font-size: 13px; font-weight: 500; color: var(--ink); }
+.review-when { font-family: var(--mono); font-size: 9px; opacity: 0.55; letter-spacing: 0.14em; text-transform: uppercase; margin-top: 2px; }
+@media (max-width: 900px) { .reviews-grid { grid-template-columns: 1fr; } }
+
+/* ============== CTA STRIP ============== */
+.cta-strip {
+  position: relative;
+  background: var(--bone-warm);
+  padding: 140px 0;
+  text-align: center;
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+}
+.cta-strip::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(184,149,106,0.15), transparent 60%);
+}
+.cta-strip h2 {
+  font-size: clamp(48px, 7vw, 120px);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  margin-bottom: 36px;
+  position: relative;
+}
+.cta-strip h2 em { font-style: italic; color: var(--gold-deep); }
+.cta-strip .actions {
+  display: inline-flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+  position: relative;
+}
+.cta-strip .ornament {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-style: italic;
+  color: var(--gold-deep);
+  margin-bottom: 16px;
+  display: block;
+  position: relative;
+}
+
+/* ============== FOOTER ============== */
+.footer {
+  background: var(--ink);
+  color: var(--bone);
+  padding: 80px 56px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.footer::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at top, rgba(184, 149, 106, 0.1), transparent 60%);
+}
+.footer-inner { position: relative; max-width: 1440px; margin: 0 auto; }
+.footer-mark {
+  font-family: var(--serif);
+  font-size: clamp(80px, 14vw, 220px);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  font-weight: 300;
+  margin-bottom: 60px;
+  color: rgba(244, 239, 230, 0.92);
+}
+.footer-mark em { font-style: italic; color: var(--gold-bright); }
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-top: 48px;
+  padding-bottom: 56px;
+  border-top: 1px solid rgba(244, 239, 230, 0.18);
+  border-bottom: 1px solid rgba(244, 239, 230, 0.18);
+}
+.footer h4 {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold-bright); margin-bottom: 20px; font-weight: 400;
+}
+.footer ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer ul a {
+  font-size: 14px; color: rgba(244, 239, 230, 0.85);
+  transition: color 0.3s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.footer ul a:hover { color: var(--gold-bright); }
+.footer-tagline {
+  font-family: var(--serif);
+  font-size: 22px; font-weight: 300; line-height: 1.3;
+  max-width: 360px;
+  color: rgba(244, 239, 230, 0.7);
+  margin-top: 12px;
+}
+.footer-tagline em { color: var(--gold-bright); font-style: italic; }
+.footer-bottom {
+  padding-top: 32px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(244, 239, 230, 0.55);
+  flex-wrap: wrap; gap: 16px;
+}
+.built-by a {
+  color: var(--gold-bright);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s;
+}
+.built-by a:hover { border-color: var(--gold-bright); }
+@media (max-width: 900px) {
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .footer { padding-left: 24px; padding-right: 24px; }
+}
+
+/* ============== PAGE HEROS (sub-pages) ============== */
+.page-hero {
+  padding: 80px 56px 100px;
+  position: relative;
+  overflow: hidden;
+  background: var(--bone);
+}
+.page-hero .inner { position: relative; max-width: 1440px; margin: 0 auto; }
+.page-hero-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: end;
+  padding-bottom: 24px;
+  margin-bottom: 48px;
+  border-bottom: 1px solid var(--ink);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.page-hero-meta .right { text-align: right; }
+.page-hero-meta .center { text-align: center; }
+.page-hero-meta .gold { color: var(--gold-deep); }
+
+.page-hero h1 {
+  font-size: clamp(56px, 11vw, 200px);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  font-weight: 300;
+  margin-bottom: 32px;
+}
+.page-hero h1 em { font-style: italic; color: var(--gold-deep); }
+.page-hero .lead {
+  font-family: var(--serif);
+  font-size: clamp(20px, 1.5vw, 26px);
+  line-height: 1.4;
+  font-weight: 300;
+  max-width: 720px;
+  color: var(--ink-soft);
+}
+@media (max-width: 720px) {
+  .page-hero { padding: 32px 24px 64px; }
+  .page-hero-meta { grid-template-columns: 1fr 1fr; }
+  .page-hero-meta .center { display: none; }
+}
+
+/* ============== ABOUT ============== */
+.about-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.about-split .text p {
+  font-size: 17px; line-height: 1.65;
+  margin-bottom: 22px;
+  color: var(--ink-soft);
+}
+.about-split .text p:first-child::first-letter {
+  font-family: var(--serif);
+  font-size: 72px;
+  float: left;
+  line-height: 0.85;
+  margin: 6px 14px 0 0;
+  color: var(--gold-deep);
+  font-weight: 300;
+  font-style: italic;
+}
+.about-split .image {
+  height: 600px;
+  background-size: cover; background-position: center;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  filter: contrast(1.04) saturate(0.95);
+}
+@media (max-width: 900px) {
+  .about-split { grid-template-columns: 1fr; gap: 40px; }
+  .about-split .image { height: 400px; }
+}
+
+/* ============== VALUES ============== */
+.values-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.value-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 40px 32px;
+  border-radius: 6px;
+  position: relative;
+  transition: all 0.4s var(--ease-out);
+}
+.value-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-4px);
+}
+.value-card .num {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.18em; color: var(--gold-deep);
+  margin-bottom: 32px;
+}
+.value-card h3 {
+  font-size: 30px;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+.value-card h3 em { color: var(--gold-deep); font-style: italic; }
+.value-card p { font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+@media (max-width: 900px) { .values-grid { grid-template-columns: 1fr; } }
+
+/* ============== TIMELINE ============== */
+.timeline-list {
+  position: relative;
+  padding-left: 0;
+}
+.timeline-row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 60px;
+  padding: 36px 0;
+  border-top: 1px solid var(--line);
+  align-items: start;
+  position: relative;
+  transition: padding 0.3s;
+}
+.timeline-row:hover { padding-left: 12px; }
+.timeline-row:last-child { border-bottom: 1px solid var(--line); }
+.timeline-row .year {
+  font-family: var(--serif);
+  font-size: 56px; font-weight: 300; font-style: italic;
+  color: var(--gold-deep); line-height: 1;
+}
+.timeline-row .content h3 {
+  font-size: 26px; margin-bottom: 8px;
+  letter-spacing: -0.015em;
+}
+.timeline-row .content p { color: var(--ink-soft); font-size: 15px; line-height: 1.55; }
+@media (max-width: 720px) {
+  .timeline-row { grid-template-columns: 1fr; gap: 14px; }
+  .timeline-row .year { font-size: 36px; }
+}
+
+/* ============== CONTACT ============== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+}
+.contact-info { display: flex; flex-direction: column; gap: 36px; }
+.contact-block h4 {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold-deep); margin-bottom: 12px; font-weight: 400;
+}
+.contact-block .v {
+  font-family: var(--serif); font-size: 26px; font-weight: 300;
+  line-height: 1.3; color: var(--ink);
+}
+.contact-block .v a { transition: color 0.3s; }
+.contact-block .v a:hover { color: var(--gold-deep); }
+
+.contact-form {
+  background: var(--paper);
+  padding: 44px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.form-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+}
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field.full { grid-column: span 2; }
+.field label {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.field input, .field select, .field textarea {
+  background: transparent;
+  border: 0; border-bottom: 1px solid var(--line);
+  padding: 12px 0;
+  color: var(--ink);
+  font-family: var(--sans); font-size: 15px;
+  transition: border-color 0.3s;
+  outline: none;
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  border-color: var(--gold-deep);
+}
+.field textarea { resize: vertical; min-height: 100px; }
+.field select option { background: var(--paper); color: var(--ink); }
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .field.full { grid-column: span 1; }
+  .contact-form { padding: 28px 24px; }
+}
+
+/* ============== MAP ============== */
+.map-wrap {
+  height: 420px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+.map-grid-bg {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(to right, var(--line-soft) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line-soft) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+.map-pin {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--gold-deep);
+  box-shadow: 0 0 0 8px rgba(184,149,106,0.18), 0 0 0 24px rgba(184,149,106,0.08);
+  animation: ping 2.4s ease-in-out infinite;
+}
+@keyframes ping {
+  0%, 100% { box-shadow: 0 0 0 8px rgba(184,149,106,0.18), 0 0 0 24px rgba(184,149,106,0.08); }
+  50% { box-shadow: 0 0 0 14px rgba(184,149,106,0.22), 0 0 0 40px rgba(184,149,106,0.04); }
+}
+.map-label {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(20px, -50%);
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  background: var(--bone); padding: 8px 14px;
+  border: 1px solid var(--line); border-radius: 4px;
+}
+
+/* ============== SERVICES PAGE FEATURE ============== */
+.services-feature {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  margin-bottom: 24px;
+}
+.service-feature-card {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+  border-radius: 6px;
+  background-size: cover; background-position: center;
+}
+.service-feature-card .scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 35%, rgba(26,22,18,0.92) 100%);
+}
+.service-feature-card .content {
+  position: absolute; bottom: 32px; left: 32px; right: 32px;
+  color: var(--bone);
+}
+.service-feature-card .content .eyebrow {
+  color: var(--gold-bright);
+  margin-bottom: 14px;
+}
+.service-feature-card .content .eyebrow::before { background: var(--gold-bright); }
+.service-feature-card h3 {
+  font-size: 36px; margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+.service-feature-card p {
+  font-family: var(--serif);
+  font-weight: 300;
+  color: rgba(244,239,230,0.85); font-size: 16px; line-height: 1.4;
+  max-width: 420px;
+}
+@media (max-width: 900px) { .services-feature { grid-template-columns: 1fr; } }
+
+/* ============== TESTIMONIAL ============== */
+.testimonial {
+  background: var(--bone-warm);
+  padding: 110px 56px;
+  text-align: center;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.testimonial blockquote {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3.4vw, 52px);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  max-width: 1100px;
+  margin: 0 auto 32px;
+  color: var(--ink);
+}
+.testimonial blockquote em { color: var(--gold-deep); font-style: italic; }
+.testimonial .cite {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* ============== PAGE TRANSITION ============== */
+.page-wipe {
+  position: fixed; inset: 0; z-index: 200;
+  background: var(--ink);
+  transform: translateY(100%);
+  pointer-events: none;
+}
+.page-wipe.in {
+  animation: wipe-in-out 1.2s var(--ease-emphasis) forwards;
+}
+@keyframes wipe-in-out {
+  0% { transform: translateY(100%); }
+  45% { transform: translateY(0); }
+  55% { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+.page-wipe-text {
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  font-family: var(--serif);
+  font-size: clamp(48px, 8vw, 140px);
+  font-weight: 300;
+  color: var(--bone);
+  letter-spacing: -0.03em;
+  font-style: italic;
+}
+
+/* page enter */
+.page-enter > * { opacity: 0; transform: translateY(24px); }
+.page-enter.ready > * { animation: page-up 0.9s var(--ease-out) forwards; }
+@keyframes page-up { to { opacity: 1; transform: translateY(0); } }
+
+/* ============== FILTERS (projects page) ============== */
+.filter-row {
+  display: flex; gap: 12px; flex-wrap: wrap;
+  margin-bottom: 48px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+  align-items: center;
+}
+.filter-row .label {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-right: 8px;
+}
+.filter-btn {
+  padding: 9px 18px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent;
+  transition: all 0.3s var(--ease-out);
+}
+.filter-btn:hover { border-color: var(--ink); }
+.filter-btn.active {
+  background: var(--ink);
+  color: var(--bone);
+  border-color: var(--ink);
+}
+.filter-btn .count { opacity: 0.6; font-family: var(--mono); font-size: 10px; }
+
+/* spec rows */
+.spec-list { border-top: 1px solid var(--line); }
+.spec-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 2fr;
+  gap: 32px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: center;
+}
+.spec-row .num { font-family: var(--mono); font-size: 11px; color: var(--gold-deep); letter-spacing: 0.16em; }
+.spec-row .name { font-family: var(--serif); font-size: 22px; font-weight: 300; }
+.spec-row .desc { font-size: 14px; color: var(--ink-soft); }
+@media (max-width: 720px) {
+  .spec-row { grid-template-columns: 60px 1fr; }
+  .spec-row .desc { grid-column: span 2; padding-top: 4px; }
+}
+
+
+/* ============== JOURNAL PAGE ============== */
+.journal-featured {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  cursor: pointer;
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease), border-color 0.3s var(--ease);
+  margin-bottom: 80px;
+  position: relative;
+  overflow: hidden;
+}
+.journal-featured:hover {
+  border-color: var(--gold-deep);
+  box-shadow: 0 30px 80px -40px rgba(0,0,0,0.25);
+}
+.jf-img {
+  height: 540px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+.jf-img::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(20,18,15,0.18), rgba(20,18,15,0.0) 60%);
+}
+.journal-featured:hover .jf-img {
+  transform: none;
+}
+.jf-stamp {
+  position: absolute;
+  top: 24px; left: 24px;
+  z-index: 2;
+  padding: 8px 14px;
+  background: var(--bone);
+  border: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.jf-text {
+  padding: 64px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 22px;
+}
+.jf-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.jf-meta .cat { color: var(--gold-deep); font-weight: 500; }
+.jf-meta .dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--ink-mute);
+  display: inline-block;
+}
+.jf-text h2 {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(40px, 4.4vw, 64px);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0;
+  text-wrap: balance;
+}
+.jf-text h2 em {
+  font-style: italic;
+  color: var(--gold-deep);
+}
+.jf-text > p {
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  font-weight: 300;
+  margin: 0;
+  max-width: 50ch;
+}
+.jf-link {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 8px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  width: fit-content;
+}
+.jf-link .arrow {
+  transition: transform 0.4s var(--ease);
+}
+.journal-featured:hover .jf-link .arrow {
+  transform: translateX(8px);
+  color: var(--gold-deep);
+}
+
+.journal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.journal-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  cursor: pointer;
+  transition: transform 0.5s var(--ease), border-color 0.3s var(--ease), box-shadow 0.5s var(--ease);
+  overflow: hidden;
+  position: relative;
+}
+.journal-card:hover {
+  border-color: var(--gold-deep);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px -30px rgba(0,0,0,0.25);
+}
+.jc-img {
+  height: 240px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.8s var(--ease);
+}
+.journal-card:hover .jc-img {
+  transform: scale(1.04);
+}
+.jc-num {
+  position: absolute;
+  top: 16px; left: 16px;
+  background: var(--bone);
+  border: 1px solid var(--line);
+  padding: 6px 10px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  z-index: 2;
+}
+.jc-body {
+  padding: 28px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+.jc-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.jc-meta .cat { color: var(--gold-deep); font-weight: 500; }
+.jc-meta .dot {
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: var(--ink-mute);
+  display: inline-block;
+}
+.jc-body h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0;
+  text-wrap: balance;
+}
+.jc-body > p {
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  font-weight: 300;
+  margin: 0;
+  flex: 1;
+}
+.jc-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.jc-foot .arrow {
+  color: var(--ink);
+  transition: transform 0.4s var(--ease);
+  font-size: 14px;
+}
+.journal-card:hover .jc-foot .arrow {
+  transform: translateX(8px);
+  color: var(--gold-deep);
+}
+
+/* ============== POST OVERLAY ============== */
+.post-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 18, 15, 0.55);
+  backdrop-filter: blur(6px);
+  z-index: 200;
+  display: flex;
+  justify-content: flex-end;
+  animation: post-fade 0.4s var(--ease);
+}
+@keyframes post-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.post-sheet {
+  width: min(820px, 100%);
+  height: 100%;
+  background: var(--bone);
+  overflow-y: auto;
+  position: relative;
+  animation: post-slide 0.55s var(--ease);
+  box-shadow: -40px 0 80px -20px rgba(0,0,0,0.3);
+}
+@keyframes post-slide {
+  from { transform: translateX(60px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+.post-close {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bone);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  z-index: 10;
+  transition: background 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.post-close:hover {
+  background: var(--gold);
+  transform: rotate(90deg);
+}
+.post-hero {
+  height: 360px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.post-hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(20,18,15,0.0) 40%, rgba(20,18,15,0.5));
+}
+.post-hero-meta {
+  position: absolute;
+  bottom: 24px;
+  left: 56px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+}
+.post-hero-meta .dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.6);
+  display: inline-block;
+}
+.post-body {
+  padding: 64px 56px 96px;
+  max-width: 720px;
+}
+.post-body h1 {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(38px, 4.4vw, 56px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0 0 28px;
+  text-wrap: balance;
+}
+.post-dek {
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--gold-deep);
+  font-weight: 300;
+  margin: 0 0 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--line);
+}
+.post-para {
+  font-family: var(--serif);
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--ink);
+  font-weight: 300;
+  margin: 0 0 24px;
+}
+.post-para:first-of-type::first-letter {
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 0.85;
+  float: left;
+  padding-right: 14px;
+  padding-top: 6px;
+  color: var(--gold-deep);
+  font-style: italic;
+}
+.post-sign {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 1024px) {
+  .journal-featured { grid-template-columns: 1fr; }
+  .jf-img { height: 360px; }
+  .jf-text { padding: 48px 36px; }
+  .journal-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+}
+@media (max-width: 720px) {
+  .journal-grid { grid-template-columns: 1fr; }
+  .jf-text { padding: 36px 28px; }
+  .jf-text h2 { font-size: 36px; }
+  .post-body { padding: 48px 28px 72px; }
+  .post-hero-meta { left: 28px; }
+}
+
+
+/* =========== MOBILE MENU =========== */
+.mobile-menu-btn {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+.mobile-menu-btn span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--ink);
+  transition: all 0.3s var(--ease-out);
+}
+.mobile-menu-btn.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.mobile-menu-btn.open span:nth-child(2) { opacity: 0; }
+.mobile-menu-btn.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.mobile-nav {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--bone);
+  z-index: 45;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 120px 24px 80px;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  font-family: var(--serif);
+  font-size: clamp(36px, 8vw, 60px);
+  font-weight: 300;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  text-align: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+  width: 100%;
+  display: block;
+  transition: color 0.3s;
+}
+.mobile-nav a:hover, .mobile-nav a.active { color: var(--gold-deep); }
+.mobile-nav .mobile-nav-wa {
+  margin-top: 32px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  border: 1px solid #25D366;
+  border-radius: 999px;
+  color: #25D366;
+}
+
+@media (max-width: 720px) {
+  .mobile-menu-btn { display: flex; }
+  .nav-links { display: none !important; }
+}
+
+/* Extra svc-row mobile fix */
+@media (max-width: 720px) {
+  .svc-row { grid-template-columns: 40px 1fr auto; gap: 16px; }
+  .svc-row .desc { display: none; }
+}
+
+/* Footer mobile */
+@media (max-width: 540px) {
+  .footer-top { grid-template-columns: 1fr; gap: 32px; }
+  .footer-mark { font-size: clamp(52px, 14vw, 120px); }
+}
+
+/* Extra responsive tweaks */
+@media (max-width: 720px) {
+  .reviews-grid { grid-template-columns: 1fr; }
+  .values-grid { grid-template-columns: 1fr; }
+  .process-rail { grid-template-columns: 1fr 1fr; }
+  .testimonial { padding: 72px 24px; }
+  .cta-strip { padding: 80px 24px; }
+}
+@media (max-width: 480px) {
+  .process-rail { grid-template-columns: 1fr; }
+}
+  </style>
+</head>
+<body>
+
+<!-- TOP TICKER -->
+<div class="top-ticker">
+  <div class="top-ticker-track">
+    <span>
+      <span>Est. 2008</span>
+      <i class="dot"></i>
+      <span>Jebel Ali, Dubai</span>
+      <i class="dot"></i>
+      <span class="gold">Façades · Frameless · Aluminium</span>
+      <i class="dot"></i>
+      <span>1,200+ projects delivered</span>
+      <i class="dot"></i>
+      <span class="gold">Studio open · Sat to Thu</span>
+      <i class="dot"></i>
+      <span>+971 · WhatsApp 24/7</span>
+      <i class="dot"></i>
+    </span>
+    <span aria-hidden="true">
+      <span>Est. 2008</span>
+      <i class="dot"></i>
+      <span>Jebel Ali, Dubai</span>
+      <i class="dot"></i>
+      <span class="gold">Façades · Frameless · Aluminium</span>
+      <i class="dot"></i>
+      <span>1,200+ projects delivered</span>
+      <i class="dot"></i>
+      <span class="gold">Studio open · Sat to Thu</span>
+      <i class="dot"></i>
+      <span>+971 · WhatsApp 24/7</span>
+      <i class="dot"></i>
+    </span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="brand" onclick="showPage('home')">
+    <div class="brand-text">
+      <span class="brand-name">Al Fouzan</span>
+      <span class="brand-divider"></span>
+      <span class="brand-sub">Glass &amp; Aluminium</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link active" data-page="home" onclick="showPage('home')">Home</a>
+    <a class="nav-link" data-page="about" onclick="showPage('about')">About</a>
+    <a class="nav-link" data-page="services" onclick="showPage('services')">Services</a>
+    <a class="nav-link" data-page="projects" onclick="showPage('projects')">Projects</a>
+    <a class="nav-link" data-page="journal" onclick="showPage('journal')">Journal</a>
+    <a class="nav-link" data-page="contact" onclick="showPage('contact')">Contact</a>
+  </div>
+  <a class="nav-wa" href="https://wa.link/a4ov5u" target="_blank" rel="noopener">
+    <span class="wa-pulse"></span>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/>
+    </svg>
+    <span class="wa-text">WhatsApp</span>
+  </a>
+  <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <a data-page="home" onclick="showPage('home');closeMobileMenu()">Home</a>
+  <a data-page="about" onclick="showPage('about');closeMobileMenu()">About</a>
+  <a data-page="services" onclick="showPage('services');closeMobileMenu()">Services</a>
+  <a data-page="projects" onclick="showPage('projects');closeMobileMenu()">Projects</a>
+  <a data-page="journal" onclick="showPage('journal');closeMobileMenu()">Journal</a>
+  <a data-page="contact" onclick="showPage('contact');closeMobileMenu()">Contact</a>
+  <a href="https://wa.link/a4ov5u" target="_blank" rel="noopener" class="mobile-nav-wa" onclick="closeMobileMenu()">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg>
+    WhatsApp the studio
+  </a>
+</div>
+
+<!-- FLOATING WHATSAPP -->
+<a class="floating-wa" href="https://wa.link/a4ov5u" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <span class="floating-wa-pulse"></span>
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/>
+  </svg>
+</a>
+
+<!-- PAGE WIPE TRANSITION -->
+<div class="page-wipe" id="pageWipe">
+  <div class="page-wipe-text" id="pageWipeText"></div>
+</div>
+
+<!-- ============ PAGES ============ -->
+<div id="pages">
+
+<!-- ============ HOME PAGE ============ -->
+<main id="page-home" class="page page-enter ready">
+  <section class="home-hero">
+    <div class="hero-edition">N°<em>26</em></div>
+
+    <div class="home-hero-meta">
+      <div class="left">
+        <div>Edition · Twenty Six</div>
+        <span class="v">Spring · 2026</span>
+      </div>
+      <div class="center">
+        <div>The Atelier Index</div>
+        <span class="v">since 2008</span>
+      </div>
+      <div class="right">
+        <div>Jebel Ali · Dubai</div>
+        <span class="v" id="gst-time">—</span>
+      </div>
+    </div>
+
+    <div class="home-hero-stage">
+      <h1 class="hero-headline">
+        <span class="ln"><span>Glass that</span></span>
+        <span class="ln"><span><em>holds</em> the</span></span>
+        <span class="ln"><span><span class="underline">light.</span></span></span>
+      </h1>
+
+      <div class="hero-cluster">
+        <div class="hc-frame f1">
+          <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1600&q=80" alt="Marina Curtain Wall" loading="eager" />
+          <div class="hc-tag">N° 01 <span class="gold">/</span> Marina Curtain Wall</div>
+        </div>
+        <div class="hc-frame f2">
+          <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1600&q=80" alt="Frameless shower" loading="eager" />
+        </div>
+        <div class="hc-frame f3">
+          <div class="hc-stamp">
+            Plate
+            <span class="num">N°<em>01</em></span>
+            Façade study
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="home-hero-bottom">
+      <p class="home-hero-lede">
+        An atelier of glaziers and metalworkers crafting facades, interiors and bespoke
+        installations across the UAE. Where engineering meets a quiet kind of beauty.
+      </p>
+      <div class="home-hero-actions">
+        <button class="btn btn-primary" onclick="showPage('projects')">
+          <span>View selected work</span>
+          <span class="arrow">↗</span>
+        </button>
+        <a class="btn btn-wa" href="https://wa.link/a4ov5u" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg>
+          <span>WhatsApp the studio</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>
+        Curtain Walls <i class="dot"></i> <em>Frameless Glass</em> <i class="dot"></i> Aluminium Doors <i class="dot"></i> <em>Skylights</em> <i class="dot"></i> Pergolas <i class="dot"></i> <em>Bespoke</em> <i class="dot"></i>
+      </span>
+      <span aria-hidden="true">
+        Curtain Walls <i class="dot"></i> <em>Frameless Glass</em> <i class="dot"></i> Aluminium Doors <i class="dot"></i> <em>Skylights</em> <i class="dot"></i> Pergolas <i class="dot"></i> <em>Bespoke</em> <i class="dot"></i>
+      </span>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat">
+      <div class="num stat-num" data-to="18" data-plus="true"><span>0</span>+</div>
+      <div class="label">Years of practice</div>
+    </div>
+    <div class="stat">
+      <div class="num stat-num" data-to="1200" data-plus="true"><span>0</span>+</div>
+      <div class="label">Projects delivered</div>
+    </div>
+    <div class="stat">
+      <div class="num stat-num" data-to="96" data-plus="false" data-suffix="%"><span>0</span>%</div>
+      <div class="label">Repeat clients</div>
+    </div>
+    <div class="stat">
+      <div class="num" style="display:inline-flex;align-items:center;gap:10px;font-family:var(--serif);font-size:clamp(48px,5vw,80px);font-weight:300;letter-spacing:-0.03em;color:var(--gold-deep);line-height:1;font-style:italic;">
+        <span>4.9</span>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+      </div>
+      <div class="label">Google reviews</div>
+    </div>
+  </div>
+
+  <!-- PHILOSOPHY -->
+  <section class="philosophy">
+    <div class="shell">
+      <div class="phil-grid">
+        <div class="phil-quote reveal">
+          We work in two materials, glass and aluminium,<br />
+          and we work in them <em>deeply.</em>
+        </div>
+        <div class="phil-side reveal reveal-delay-1">
+          <span class="eyebrow">A note from the studio</span>
+          <p>
+            The discipline of doing fewer things, better, is the only honest path to a craft.
+            Every commission begins on tracing paper in our Jebel Ali studio, then moves to CAD,
+            then to a 1:1 mock up on the workshop floor before a single millimetre of glass is cut.
+          </p>
+          <p style="margin-top:28px">
+            Our cutters, welders, glaziers and installers are on payroll, in uniform, and have been
+            with us for an average of nine years. The hands that draw your project are the hands
+            that finish it.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES INDEX -->
+  <section>
+    <div class="shell">
+      <div class="section-head">
+        <h2 class="reveal">What the<br /><em>atelier</em> does.</h2>
+        <p class="lead reveal reveal-delay-1">
+          Five disciplines, one workshop. Each runs as its own studio inside the atelier,
+          led by a foreman with us at least seven years.
+        </p>
+      </div>
+      <div class="svc-index reveal">
+        <div class="svc-row" onclick="showPage('services')">
+          <span class="num">N° 01</span>
+          <span class="name"><em>Curtain</em> Walls &amp; Façades</span>
+          <span class="desc">Unitised, stick built and structural glazing for towers, hotels and institutions.</span>
+          <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="svc-row" onclick="showPage('services')">
+          <span class="num">N° 02</span>
+          <span class="name"><em>Frameless</em> Glass</span>
+          <span class="desc">Showers, partitions, balustrades, shopfronts. Edge polished, low iron, switchable.</span>
+          <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="svc-row" onclick="showPage('services')">
+          <span class="num">N° 03</span>
+          <span class="name"><em>Aluminium</em> Doors &amp; Windows</span>
+          <span class="desc">Schüco, Reynaers and bespoke profiles. Sliding, lift and slide, pivot, bi fold.</span>
+          <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="svc-row" onclick="showPage('services')">
+          <span class="num">N° 04</span>
+          <span class="name"><em>Skylights</em> &amp; Pergolas</span>
+          <span class="desc">Climate tuned overhead glazing and motorised louvred pergolas.</span>
+          <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="svc-row" onclick="showPage('services')">
+          <span class="num">N° 05</span>
+          <span class="name"><em>Custom</em> Fabrication</span>
+          <span class="desc">One off pieces from the in house workshop. Anything you can draw, we can build.</span>
+          <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SELECTED WORK -->
+  <section>
+    <div class="shell">
+      <div class="section-head">
+        <h2 class="reveal">Selected<br /><em>work.</em></h2>
+        <p class="lead reveal reveal-delay-1">
+          A small sample from the last twelve months. The full archive sits in the projects room.
+          Eighteen years of facades, interiors and one offs.
+        </p>
+      </div>
+      <div class="projects-grid reveal">
+        <div class="project-card span-7" onclick="showPage('projects')">
+          <div class="project-img" style="background-image:url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1600&q=80')"></div>
+          <div class="project-overlay"></div>
+          <div class="project-info">
+            <div>
+              <div class="title">Marina Tower Façade</div>
+              <div class="meta">Dubai Marina · Curtain Wall · 2025</div>
+            </div>
+            <span class="tag">Featured</span>
+          </div>
+        </div>
+        <div class="project-card span-5" onclick="showPage('projects')">
+          <div class="project-img" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80')"></div>
+          <div class="project-overlay"></div>
+          <div class="project-info">
+            <div>
+              <div class="title">Emirates Hills Villa</div>
+              <div class="meta">Private · Sliding Glass · 2025</div>
+            </div>
+          </div>
+        </div>
+        <div class="project-card span-5" onclick="showPage('projects')">
+          <div class="project-img" style="background-image:url('https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1600&q=80')"></div>
+          <div class="project-overlay"></div>
+          <div class="project-info">
+            <div>
+              <div class="title">Spiral Balustrade</div>
+              <div class="meta">Al Barari · Frameless · 2024</div>
+            </div>
+          </div>
+        </div>
+        <div class="project-card span-7" onclick="showPage('projects')">
+          <div class="project-img" style="background-image:url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1600&q=80')"></div>
+          <div class="project-overlay"></div>
+          <div class="project-info">
+            <div>
+              <div class="title">DIFC Banking Lobby</div>
+              <div class="meta">Dubai International Financial Centre · 2024</div>
+            </div>
+            <span class="tag">Award</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:56px;display:flex;justify-content:center;" class="reveal">
+        <button class="btn" onclick="showPage('projects')">
+          <span>Open the full archive</span>
+          <span class="arrow">→</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section style="background:var(--bone-warm)">
+    <div class="shell">
+      <div class="section-head">
+        <h2 class="reveal">A measured<br /><em>four step</em> process.</h2>
+        <p class="lead reveal reveal-delay-1">
+          Slower than most clients expect, until they see the install. Then they understand.
+        </p>
+      </div>
+      <div class="process-rail reveal">
+        <div class="proc-step">
+          <div class="proc-dot"></div>
+          <div class="proc-num">Step 01</div>
+          <h3>Listen<em>.</em></h3>
+          <p>A site visit, a conversation, your reference images. We build a brief together. No templates.</p>
+        </div>
+        <div class="proc-step">
+          <div class="proc-dot"></div>
+          <div class="proc-num">Step 02</div>
+          <h3>Draw<em>.</em></h3>
+          <p>Engineered shop drawings, glass specs, hardware schedules. Reviewed in studio before fabrication.</p>
+        </div>
+        <div class="proc-step">
+          <div class="proc-dot"></div>
+          <div class="proc-num">Step 03</div>
+          <h3>Fabricate<em>.</em></h3>
+          <p>Cut, mitred and finished in our Jebel Ali workshop. Quality checked twice before it leaves.</p>
+        </div>
+        <div class="proc-step">
+          <div class="proc-dot"></div>
+          <div class="proc-num">Step 04</div>
+          <h3>Install<em>.</em></h3>
+          <p>Our own team on site. Levelled, sealed, polished. We sign off only when you do.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section>
+    <div class="shell">
+      <div class="reviews-head">
+        <div>
+          <span class="eyebrow reveal">Voices</span>
+          <h2 class="reveal reveal-delay-1" style="margin-top:16px">What clients<br /><em>say.</em></h2>
+        </div>
+        <div class="google-card reveal reveal-delay-2">
+          <div class="gicon">
+            <svg width="26" height="26" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1A6.6 6.6 0 0 1 5.5 12c0-.73.13-1.44.34-2.1V7.06H2.18A11 11 0 0 0 1 12c0 1.78.43 3.46 1.18 4.94l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/></svg>
+          </div>
+          <div>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span class="rate">4.9</span>
+              <span class="stars" style="display:flex;gap:2px;color:var(--gold);">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+              </span>
+            </div>
+            <div class="lbl">Verified Google reviews</div>
+          </div>
+        </div>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card reveal reveal-delay-1">
+          <div class="review-quote">"</div>
+          <div class="stars" style="display:flex;gap:3px;color:var(--gold);">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+          </div>
+          <p class="review-text">Had two custom aluminum bathroom doors made and installed. The craftsmanship and attention to detail during installation were excellent. Everything fit perfectly.</p>
+          <div class="review-author">
+            <div class="review-avatar">FA</div>
+            <div><div class="review-name">Faisal A.</div><div class="review-when">a year ago</div></div>
+          </div>
+        </div>
+        <div class="review-card reveal reveal-delay-2">
+          <div class="review-quote">"</div>
+          <div class="stars" style="display:flex;gap:3px;color:var(--gold);">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+          </div>
+          <p class="review-text">High quality materials, precise fabrication, clean installation. The aluminum louvers were perfectly aligned. A genuinely professional team.</p>
+          <div class="review-author">
+            <div class="review-avatar">AR</div>
+            <div><div class="review-name">Ahmed R.</div><div class="review-when">5 months ago</div></div>
+          </div>
+        </div>
+        <div class="review-card reveal reveal-delay-3">
+          <div class="review-quote">"</div>
+          <div class="stars" style="display:flex;gap:3px;color:var(--gold);">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+          </div>
+          <p class="review-text">Very professional and reliable. No stories, no drama, no exaggeration of issues. Simply did the agreed job at the agreed price.</p>
+          <div class="review-author">
+            <div class="review-avatar">SK</div>
+            <div><div class="review-name">Sara K.</div><div class="review-when">5 months ago</div></div>
+          </div>
+        </div>
+        <div class="review-card reveal reveal-delay-1">
+          <div class="review-quote">"</div>
+          <div class="stars" style="display:flex;gap:3px;color:var(--gold);">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+          </div>
+          <p class="review-text">If you're looking for experts in aluminum doors, look no further. Highly skilled team, fixed my doors without needing to replace them.</p>
+          <div class="review-author">
+            <div class="review-avatar">LM</div>
+            <div><div class="review-name">Layla M.</div><div class="review-when">6 months ago</div></div>
+          </div>
+        </div>
+        <div class="review-card reveal reveal-delay-2">
+          <div class="review-quote">"</div>
+          <div class="stars" style="display:flex;gap:3px;color:var(--gold);">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+          </div>
+          <p class="review-text">Very happy with the front gate. After checking several suppliers, this was the most affordable option, and the quality didn't compromise at all.</p>
+          <div class="review-author">
+            <div class="review-avatar">HB</div>
+            <div><div class="review-name">Hisham B.</div><div class="review-when">9 months ago</div></div>
+          </div>
+        </div>
+        <div class="review-card reveal reveal-delay-3">
+          <div class="review-quote">"</div>
+          <div class="stars" style="display:flex;gap:3px;color:var(--gold);">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 L14.85 8.7 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.15 8.7 Z"/></svg>
+          </div>
+          <p class="review-text">Best aluminium and glass company I've dealt with. Attention to detail and price is very affordable. Outstanding service.</p>
+          <div class="review-author">
+            <div class="review-avatar">OT</div>
+            <div><div class="review-name">Omar T.</div><div class="review-when">a year ago</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-strip">
+    <div class="reveal">
+      <span class="ornament">/ / /</span>
+      <h2>Have something<br /><em>in mind?</em></h2>
+      <div class="actions">
+        <a class="btn btn-wa" href="https://wa.link/a4ov5u" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg>
+          <span>WhatsApp the studio</span>
+        </a>
+        <button class="btn" onclick="showPage('contact')">
+          <span>Send a written brief</span>
+          <span class="arrow">↗</span>
+        </button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ ABOUT PAGE ============ -->
+<main id="page-about" class="page page-enter ready" style="display:none">
+  <section class="page-hero">
+    <div class="inner">
+      <div class="page-hero-meta">
+        <div class="left">Chapter 02</div>
+        <div class="center"><span class="gold">About the atelier</span></div>
+        <div class="right">2008 — present</div>
+      </div>
+      <h1>An atelier,<br />not a <em>contractor.</em></h1>
+      <p class="lead">
+        Al Fouzan was founded in 2008 by a glazier and an aluminium fabricator who'd grown
+        tired of compromise. Eighteen years later, we're still small enough to know every
+        project by name, and large enough to deliver them on time.
+      </p>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="shell">
+      <div class="about-split">
+        <div class="text reveal">
+          <p>We work in two materials, glass and aluminium, and we work in them deeply. That's the choice we made early on, and it's the choice we keep making. The discipline of doing fewer things, better, is the only honest path to a craft.</p>
+          <p>Every commission begins in our Jebel Ali studio with paper drawings, then moves to CAD, then to a 1:1 mock up on the workshop floor before a single millimetre of glass is cut. Our clients tell us the process feels slower than they expected, until they see the install. Then they understand why.</p>
+          <p>We don't sub contract. Our cutters, welders, glaziers and installers are on payroll, in uniform, and have been with us for an average of nine years. The hands that draw your project are the hands that finish it.</p>
+        </div>
+        <div class="image reveal reveal-delay-1" style="background-image:url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1600&q=80')"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="num stat-num" data-to="18" data-plus="true"><span>0</span>+</div>
+      <div class="label">Years</div>
+    </div>
+    <div class="stat">
+      <div class="num stat-num" data-to="1200" data-plus="true"><span>0</span>+</div>
+      <div class="label">Projects</div>
+    </div>
+    <div class="stat">
+      <div class="num stat-num" data-to="42" data-plus="true"><span>0</span>+</div>
+      <div class="label">Craftsmen</div>
+    </div>
+    <div class="stat">
+      <div class="num stat-num" data-to="9" data-plus="false"><span>0</span></div>
+      <div class="label">Avg. tenure (yrs)</div>
+    </div>
+  </div>
+
+  <section>
+    <div class="shell">
+      <div class="section-head">
+        <h2 class="reveal">Three things<br />we will <em>not</em> compromise.</h2>
+        <p class="lead reveal reveal-delay-1">The principles we wrote down in 2008. We've never had to revise them.</p>
+      </div>
+      <div class="values-grid">
+        <div class="value-card reveal">
+          <div class="num">001 / Material</div>
+          <h3>Glass as a <em>fluid</em>.</h3>
+          <p>Low iron, tempered, laminated, switchable, anti bacterial. We specify glass like a winemaker chooses a varietal. Origin matters. Edge work matters more.</p>
+        </div>
+        <div class="value-card reveal reveal-delay-1">
+          <div class="num">002 / Joinery</div>
+          <h3>The <em>silent</em> reveal.</h3>
+          <p>Mitred corners, hidden gaskets, structural silicone laid in a single bead. The detail you don't notice took us six iterations to get right.</p>
+        </div>
+        <div class="value-card reveal reveal-delay-2">
+          <div class="num">003 / Time</div>
+          <h3>The <em>handover.</em></h3>
+          <p>We deliver on the date in the contract. If we miss it, the lost days are on us. In eighteen years we have written that cheque four times.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--bone-warm)">
+    <div class="shell">
+      <div class="section-head">
+        <h2 class="reveal">The <em>long</em> arc.</h2>
+        <p class="lead reveal reveal-delay-1">A short chronology. The longer one lives in the workshop.</p>
+      </div>
+      <div class="timeline-list reveal">
+        <div class="timeline-row">
+          <div class="year">2008</div>
+          <div class="content"><h3>Founded in Jebel Ali</h3><p>Two craftsmen, a small workshop in Jebel Ali Industrial First, and a single contract for a residential staircase balustrade.</p></div>
+        </div>
+        <div class="timeline-row">
+          <div class="year">2013</div>
+          <div class="content"><h3>First curtain wall</h3><p>Awarded the façade of a mid rise office in Business Bay. Our first foray into engineered glazing systems.</p></div>
+        </div>
+        <div class="timeline-row">
+          <div class="year">2017</div>
+          <div class="content"><h3>Workshop expansion</h3><p>Moved to a 4,000 m² fabrication facility in Jebel Ali. Brought CNC mitre and edge polishing in house.</p></div>
+        </div>
+        <div class="timeline-row">
+          <div class="year">2021</div>
+          <div class="content"><h3>High visibility cladding</h3><p>ACP cladding for an LED screen structure in Abu Dhabi, working alongside the main contractor.</p></div>
+        </div>
+        <div class="timeline-row">
+          <div class="year">2025</div>
+          <div class="content"><h3>Marina Tower delivered</h3><p>Eighteen storey unitised curtain wall handed over four days ahead of schedule. Our most complex façade to date.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-strip">
+    <div class="reveal">
+      <span class="ornament">/ / /</span>
+      <h2>Visit the<br /><em>workshop.</em></h2>
+      <div class="actions">
+        <a class="btn btn-wa" href="https://wa.link/a4ov5u" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg>
+          <span>Book a studio visit</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ SERVICES PAGE ============ -->
+<main id="page-services" class="page page-enter ready" style="display:none">
+  <section class="page-hero">
+    <div class="inner">
+      <div class="page-hero-meta">
+        <div class="left">Chapter 03</div>
+        <div class="center"><span class="gold">The disciplines</span></div>
+        <div class="right">Five studios · one atelier</div>
+      </div>
+      <h1>What we <em>do,</em><br />and how.</h1>
+      <p class="lead">Five disciplines, one workshop. Each runs as its own studio inside the atelier, led by a foreman who has been with us at least seven years.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="shell">
+      <div class="services-feature reveal">
+        <div class="service-feature-card" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&q=80')">
+          <div class="scrim"></div>
+          <div class="content">
+            <span class="eyebrow">N° 01 / Curtain Walls</span>
+            <h3>Façades &amp; Curtain Walls</h3>
+            <p>Unitised, stick built and structural glazing for commercial towers, hotels, hospitals and cultural institutions.</p>
+          </div>
+        </div>
+        <div class="service-feature-card" style="background-image:url('https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1600&q=80')">
+          <div class="scrim"></div>
+          <div class="content">
+            <span class="eyebrow">N° 02 / Frameless</span>
+            <h3>Frameless Glass</h3>
+            <p>Showers, partitions, shopfronts and balustrades in low iron, laminated and switchable glass. Finished edge to edge.</p>
+          </div>
+        </div>
+      </div>
+      <div class="svc-index reveal">
+        <div class="svc-row" onclick="showPage('contact')">
+          <span class="num">N° 03</span>
+          <span class="name"><em>Aluminium</em> Doors &amp; Windows</span>
+          <span class="desc">Schüco, Reynaers and bespoke extrusions. Sliding, lift and slide, pivot, bi fold and casement.</span>
+          <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="svc-row" onclick="showPage('contact')">
+          <span class="num">N° 04</span>
+          <span class="name"><em>Skylights</em> &amp; Roof Glazing</span>
+          <span class="desc">Climate tuned overhead glazing. Pyramids, ridges, walk on floors. Engineered for Dubai summers.</span>
+          <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="svc-row" onclick="showPage('contact')">
+          <span class="num">N° 05</span>
+          <span class="name"><em>Aluminium</em> Pergolas</span>
+          <span class="desc">Motorised louvred pergolas with integrated lighting, heating and rain sensors.</span>
+          <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="svc-row" onclick="showPage('contact')">
+          <span class="num">N° 06</span>
+          <span class="name"><em>Custom</em> Fabrication</span>
+          <span class="desc">One off pieces from the workshop. Staircases, screens, brass trim doors, mirrored cabinetry.</span>
+          <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="svc-row" onclick="showPage('contact')">
+          <span class="num">N° 07</span>
+          <span class="name"><em>Maintenance</em> &amp; Replacement</span>
+          <span class="desc">Cleaning, re sealing and panel replacement programs for buildings we built, and many we did not.</span>
+          <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonial">
+    <blockquote class="reveal">We asked for a 6 metre pivot door in low iron glass. Two suppliers said it couldn't be done. Al Fouzan asked when it was needed and what the floor would carry. <em>That's the difference.</em></blockquote>
+    <div class="cite reveal reveal-delay-1">/ Layla M., Interior Architect</div>
+  </section>
+
+  <section>
+    <div class="shell">
+      <div class="section-head">
+        <h2 class="reveal">Materials we<br /><em>specify</em> daily.</h2>
+        <p class="lead reveal reveal-delay-1">Every project starts with material selection. These are the systems and grades we know intimately.</p>
+      </div>
+      <div class="spec-list reveal">
+        <div class="spec-row"><span class="num">G / 01</span><span class="name">Low iron tempered</span><span class="desc">Edge polished, ultra clear, 8 / 10 / 12 / 15 / 19 mm</span></div>
+        <div class="spec-row"><span class="num">G / 02</span><span class="name">Laminated safety</span><span class="desc">PVB and SentryGlas interlayers, security and acoustic grades</span></div>
+        <div class="spec-row"><span class="num">G / 03</span><span class="name">Switchable PDLC</span><span class="desc">On demand privacy glass for meeting rooms, bathrooms, partitions</span></div>
+        <div class="spec-row"><span class="num">A / 01</span><span class="name">Schüco AWS / ASS</span><span class="desc">Premium German systems for residential and commercial</span></div>
+        <div class="spec-row"><span class="num">A / 02</span><span class="name">Reynaers MasterLine</span><span class="desc">Belgian engineering. High performance windows and doors.</span></div>
+        <div class="spec-row"><span class="num">A / 03</span><span class="name">Bespoke extrusions</span><span class="desc">Custom die profiles for one off projects, brass and bronze trims</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-strip">
+    <div class="reveal">
+      <span class="ornament">/ / /</span>
+      <h2>Tell us what<br />you're <em>building.</em></h2>
+      <div class="actions">
+        <a class="btn btn-wa" href="https://wa.link/a4ov5u" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg>
+          <span>Request a quotation</span>
+        </a>
+        <button class="btn" onclick="showPage('contact')">
+          <span>Send a brief</span>
+          <span class="arrow">↗</span>
+        </button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ PROJECTS PAGE ============ -->
+<main id="page-projects" class="page page-enter ready" style="display:none">
+  <section class="page-hero">
+    <div class="inner">
+      <div class="page-hero-meta">
+        <div class="left">Chapter 04</div>
+        <div class="center"><span class="gold">Selected projects</span></div>
+        <div class="right">2008 — 2026</div>
+      </div>
+      <h1>The <em>archive,</em><br />edited.</h1>
+      <p class="lead">A working selection from eighteen years of facades, interiors and one offs. More on request. Some pieces don't show on the public web.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="shell">
+      <div class="filter-row reveal">
+        <span class="label">Filter</span>
+        <button class="filter-btn active" data-filter="all" onclick="filterProjects('all',this)"><span>All</span><span class="count">9</span></button>
+        <button class="filter-btn" data-filter="commercial" onclick="filterProjects('commercial',this)"><span>Commercial</span><span class="count">4</span></button>
+        <button class="filter-btn" data-filter="residential" onclick="filterProjects('residential',this)"><span>Residential</span><span class="count">5</span></button>
+      </div>
+      <div class="projects-grid" id="projects-grid"></div>
+    </div>
+  </section>
+
+  <section class="cta-strip">
+    <div class="reveal">
+      <span class="ornament">/ / /</span>
+      <h2>Yours could<br />be <em>next.</em></h2>
+      <div class="actions">
+        <a class="btn btn-wa" href="https://wa.link/a4ov5u" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg>
+          <span>Start a conversation</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ JOURNAL PAGE ============ -->
+<main id="page-journal" class="page page-enter ready" style="display:none">
+  <section class="page-hero">
+    <div class="inner">
+      <div class="page-hero-meta">
+        <div class="left">Chapter 06</div>
+        <div class="center"><span class="gold">The Journal</span></div>
+        <div class="right">Notes from the studio</div>
+      </div>
+      <h1>Field notes,<br /><em>workshop</em> letters.</h1>
+      <p class="lead">Short essays from the bench. On material, joinery, the buildings we love and the mistakes we have made along the way. Updated on no schedule at all.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="shell">
+      <div class="journal-featured reveal" onclick="openPost('low-iron')">
+        <div class="jf-img" style="background-image:url('https://images.unsplash.com/photo-1545972154-9bb223aac798?w=1600&q=80')">
+          <span class="jf-stamp">N° 01 / Featured</span>
+        </div>
+        <div class="jf-text">
+          <div class="jf-meta">
+            <span class="cat">Material</span><i class="dot"></i><span>Apr 18, 2026</span><i class="dot"></i><span>6 min read</span>
+          </div>
+          <h2>Why we specify low iron glass, almost always.</h2>
+          <p>A note on clarity, edge colour and the green tint you stop seeing only after you stop using it.</p>
+          <span class="jf-link">Read the essay <span class="arrow">→</span></span>
+        </div>
+      </div>
+
+      <div class="journal-grid">
+        <article class="journal-card reveal reveal-delay-1" onclick="openPost('unitised')">
+          <div class="jc-img" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&q=80')">
+            <span class="jc-num">N° 02</span>
+          </div>
+          <div class="jc-body">
+            <div class="jc-meta"><span class="cat">Façades</span><i class="dot"></i><span>Mar 27, 2026</span></div>
+            <h3>Unitised vs stick built: when each one wins.</h3>
+            <p>A field guide for architects choosing a curtain wall system.</p>
+            <div class="jc-foot"><span>9 min read</span><span class="arrow">→</span></div>
+          </div>
+        </article>
+        <article class="journal-card reveal reveal-delay-2" onclick="openPost('pivot')">
+          <div class="jc-img" style="background-image:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1600&q=80')">
+            <span class="jc-num">N° 03</span>
+          </div>
+          <div class="jc-body">
+            <div class="jc-meta"><span class="cat">Workshop</span><i class="dot"></i><span>Feb 14, 2026</span></div>
+            <h3>A six metre pivot door, step by step.</h3>
+            <p>The making of an oversized low iron pivot for a private villa in Emirates Hills.</p>
+            <div class="jc-foot"><span>7 min read</span><span class="arrow">→</span></div>
+          </div>
+        </article>
+        <article class="journal-card reveal reveal-delay-3" onclick="openPost('desert')">
+          <div class="jc-img" style="background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=80')">
+            <span class="jc-num">N° 04</span>
+          </div>
+          <div class="jc-body">
+            <div class="jc-meta"><span class="cat">Engineering</span><i class="dot"></i><span>Jan 30, 2026</span></div>
+            <h3>Designing glazing for a Dubai summer.</h3>
+            <p>Solar gain, low e coatings, and the difference between a façade that performs on paper and one that performs in August.</p>
+            <div class="jc-foot"><span>8 min read</span><span class="arrow">→</span></div>
+          </div>
+        </article>
+        <article class="journal-card reveal reveal-delay-1" onclick="openPost('switchable')">
+          <div class="jc-img" style="background-image:url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1600&q=80')">
+            <span class="jc-num">N° 05</span>
+          </div>
+          <div class="jc-body">
+            <div class="jc-meta"><span class="cat">Material</span><i class="dot"></i><span>Dec 12, 2025</span></div>
+            <h3>Switchable glass, beyond the gimmick.</h3>
+            <p>PDLC partitions in clinics, meeting rooms and primary bathrooms.</p>
+            <div class="jc-foot"><span>5 min read</span><span class="arrow">→</span></div>
+          </div>
+        </article>
+        <article class="journal-card reveal reveal-delay-2" onclick="openPost('visit')">
+          <div class="jc-img" style="background-image:url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1600&q=80')">
+            <span class="jc-num">N° 06</span>
+          </div>
+          <div class="jc-body">
+            <div class="jc-meta"><span class="cat">Studio</span><i class="dot"></i><span>Nov 04, 2025</span></div>
+            <h3>A morning in the Jebel Ali workshop.</h3>
+            <p>Edge polishing, mitre cuts and the smell of fresh aluminium swarf.</p>
+            <div class="jc-foot"><span>4 min read</span><span class="arrow">→</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-strip">
+    <div class="reveal">
+      <span class="ornament">/ / /</span>
+      <h2>Want notes<br />in your <em>inbox?</em></h2>
+      <div class="actions">
+        <a class="btn btn-wa" href="https://wa.link/a4ov5u" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg>
+          <span>Tell us, on WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ CONTACT PAGE ============ -->
+<main id="page-contact" class="page page-enter ready" style="display:none">
+  <section class="page-hero">
+    <div class="inner">
+      <div class="page-hero-meta">
+        <div class="left">Chapter 05</div>
+        <div class="center"><span class="gold">In conversation</span></div>
+        <div class="right">Reply within one working day</div>
+      </div>
+      <h1>Begin a<br /><em>conversation.</em></h1>
+      <p class="lead">Tell us about your project, even if it's just a sketch on a napkin. We come back within one working day, and visit your site within the week.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="shell">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <div class="contact-block">
+            <h4>Studio</h4>
+            <div class="v"><a href="https://maps.app.goo.gl/sXu68V3U18YwirEo9" target="_blank" rel="noopener">Jebel Ali Industrial First<br />Dubai, United Arab Emirates</a></div>
+          </div>
+          <div class="contact-block">
+            <h4>WhatsApp</h4>
+            <div class="v">
+              <a href="https://wa.link/a4ov5u" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:12px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg>
+                Chat now
+              </a>
+            </div>
+          </div>
+          <div class="contact-block">
+            <h4>Email</h4>
+            <div class="v"><a href="mailto:alfouzanglass@gmail.com">alfouzanglass@gmail.com</a></div>
+          </div>
+          <div class="contact-block">
+            <h4>Hours</h4>
+            <div class="v">Sat to Thu, 8am to 6pm<br /><span style="font-size:14px;color:var(--ink-mute);font-family:var(--mono);letter-spacing:0.16em;text-transform:uppercase;">Workshop visits by appointment</span></div>
+          </div>
+          <div class="contact-block">
+            <h4>Social</h4>
+            <div class="v">
+              <a href="https://www.instagram.com/alfouzanglass" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:12px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/></svg>
+                @alfouzanglass
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+          <div class="contact-form" id="contact-form-wrap">
+            <div class="form-grid">
+              <div class="field"><label>First name</label><input type="text" id="cf-first" placeholder="Faisal" /></div>
+              <div class="field"><label>Last name</label><input type="text" id="cf-last" placeholder="Al Saud" /></div>
+              <div class="field"><label>Email</label><input type="email" id="cf-email" placeholder="you@studio.com" /></div>
+              <div class="field"><label>Phone</label><input type="tel" id="cf-phone" placeholder="+971 …" /></div>
+              <div class="field full">
+                <label>Project type</label>
+                <select id="cf-type">
+                  <option>Curtain wall / façade</option>
+                  <option>Frameless glass</option>
+                  <option>Aluminium doors &amp; windows</option>
+                  <option>Skylight / roof glazing</option>
+                  <option>Pergola</option>
+                  <option>Bespoke fabrication</option>
+                  <option>Maintenance / replacement</option>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
+              <div class="field full"><label>Tell us about it</label><textarea id="cf-message" placeholder="Site, scale, dates, references. Whatever you have." rows="4"></textarea></div>
+            </div>
+            <div style="display:flex;gap:12px;margin-top:32px;flex-wrap:wrap;">
+              <button class="btn btn-primary" onclick="submitForm()">
+                <span>Send enquiry</span>
+                <span class="arrow">↗</span>
+              </button>
+              <a class="btn btn-wa" href="https://wa.link/a4ov5u" target="_blank" rel="noopener">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg>
+                <span>or WhatsApp</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:64px" class="reveal">
+        <a href="https://maps.app.goo.gl/sXu68V3U18YwirEo9" target="_blank" rel="noopener">
+          <div class="map-wrap">
+            <div class="map-grid-bg"></div>
+            <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.4" preserveAspectRatio="none">
+              <path d="M 0 240 Q 200 220 380 260 T 800 280 T 1200 240" stroke="var(--gold-deep)" stroke-width="1" fill="none" stroke-dasharray="4 6"/>
+              <path d="M 0 320 Q 300 340 600 310 T 1200 340" stroke="var(--ink-mute)" stroke-width="1" fill="none" stroke-dasharray="2 8" opacity="0.4"/>
+            </svg>
+            <div class="map-pin"></div>
+            <div class="map-label">Al Fouzan Studio · Jebel Ali, Dubai</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+</div><!-- /#pages -->
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" id="site-footer">
+  <div class="footer-inner">
+    <div class="footer-mark">Al Fouzan<br />Glass &amp; <em>Aluminium.</em></div>
+    <div class="footer-top">
+      <div>
+        <div class="brand" onclick="showPage('home')" style="cursor:pointer">
+          <div class="brand-text">
+            <span class="brand-name">Al Fouzan</span>
+            <span class="brand-divider"></span>
+            <span class="brand-sub">Glass &amp; Aluminium</span>
+          </div>
+        </div>
+        <p class="footer-tagline">Crafting facades and interiors with <em>uncompromising</em> precision since 2008.</p>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <ul>
+          <li><a onclick="showPage('home')">Home</a></li>
+          <li><a onclick="showPage('about')">About</a></li>
+          <li><a onclick="showPage('services')">Services</a></li>
+          <li><a onclick="showPage('projects')">Projects</a></li>
+          <li><a onclick="showPage('journal')">Journal</a></li>
+          <li><a onclick="showPage('contact')">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="https://maps.app.goo.gl/sXu68V3U18YwirEo9" target="_blank" rel="noopener">Jebel Ali, Dubai</a></li>
+          <li><a href="mailto:alfouzanglass@gmail.com">alfouzanglass@gmail.com</a></li>
+          <li>
+            <a href="https://wa.link/a4ov5u" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg>
+              WhatsApp
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/alfouzanglass" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/></svg>
+              @alfouzanglass
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4>Disciplines</h4>
+        <ul>
+          <li><a onclick="showPage('services')">Curtain Walls</a></li>
+          <li><a onclick="showPage('services')">Frameless Glass</a></li>
+          <li><a onclick="showPage('services')">Aluminium Doors</a></li>
+          <li><a onclick="showPage('services')">Skylights &amp; Pergolas</a></li>
+          <li><a onclick="showPage('services')">Custom Fabrication</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Al Fouzan Glass &amp; Aluminium. All rights reserved.</span>
+      <span class="built-by">Built by <a href="https://talkthetaste.com" target="_blank" rel="noopener">TalkTheTaste</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- POST OVERLAY -->
+<div class="post-overlay" id="post-overlay" style="display:none" onclick="closePost()">
+  <div class="post-sheet" onclick="event.stopPropagation()">
+    <button class="post-close" onclick="closePost()" aria-label="Close">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6l-12 12"/></svg>
+    </button>
+    <div class="post-hero" id="post-hero-img"></div>
+    <div class="post-body" id="post-body"></div>
+  </div>
+</div>
+
+<script>
+// ============ DATA ============
+const POSTS = {
+  'low-iron': {
+    title: 'Why we specify low iron glass, almost always.',
+    dek: 'A note on clarity, edge colour and the green tint you stop seeing only after you stop using it.',
+    cat: 'Material', date: 'Apr 18, 2026', read: '6 min',
+    img: 'https://images.unsplash.com/photo-1545972154-9bb223aac798?w=1600&q=80',
+    body: [
+      'Standard float glass carries a faint green tint at the edges. You see it most clearly in a 19mm shower screen, where the cumulative thickness reads as a swimming-pool stripe along every cut line.',
+      'Low iron glass strips out the iron oxide that causes the green. The result is a pane that reads true white at the edge, and that lets the natural colour of stone, brass and timber sit behind it without correction. It is roughly fifteen percent more expensive. We have never had a client ask us to switch back.'
+    ]
+  },
+  'unitised': {
+    title: 'Unitised vs stick built: when each one wins.',
+    dek: 'A field guide for architects choosing a curtain wall system. From sequencing on a tight site to the economics above twelve storeys.',
+    cat: 'Façades', date: 'Mar 27, 2026', read: '9 min',
+    img: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&q=80',
+    body: [
+      'Stick built systems are assembled mullion by mullion on site. They are forgiving, slow, and well suited to low rise work where access is easy and tolerances are generous.',
+      'Unitised systems arrive on site as factory finished panels and click together. They cost more up front and demand more of the structural engineer, but on a tight Dubai plot above twelve storeys they pay for themselves in programme alone.'
+    ]
+  },
+  'pivot': {
+    title: 'A six metre pivot door, step by step.',
+    dek: 'The making of an oversized low iron pivot for a private villa in Emirates Hills. A short photo essay from the workshop floor.',
+    cat: 'Workshop', date: 'Feb 14, 2026', read: '7 min',
+    img: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1600&q=80',
+    body: [
+      'The brief was a single leaf, six metres tall, with no visible hardware on the inside face. We tested three pivot systems before committing to a custom floor mounted assembly capable of carrying 480 kilograms with a closing torque a child could move.',
+      'The glass was annealed, heat soaked, and laminated in two passes. The frame was machined from a single billet of aluminium so the corners had no welds to telegraph through the polish.'
+    ]
+  },
+  'desert': {
+    title: 'Designing glazing for a Dubai summer.',
+    dek: 'Solar gain, low e coatings, and the difference between a façade that performs on paper and one that performs in August.',
+    cat: 'Engineering', date: 'Jan 30, 2026', read: '8 min',
+    img: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=80',
+    body: [
+      'A spec sheet will tell you the U value, the SHGC and the visible light transmission. It will not tell you what the inside face of the glass feels like at four in the afternoon when the sun has been on it for nine hours.',
+      'Triple silver low e coatings, argon fill, and a warm edge spacer are now table stakes. The harder choices are about geometry. A two metre overhang earns its keep on every south facing elevation in the Emirates.'
+    ]
+  },
+  'switchable': {
+    title: 'Switchable glass, beyond the gimmick.',
+    dek: 'PDLC partitions in clinics, meeting rooms and primary bathrooms. Where the technology earns its keep, and where it does not.',
+    cat: 'Material', date: 'Dec 12, 2025', read: '5 min',
+    img: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1600&q=80',
+    body: [
+      'Switchable glass goes from clear to translucent at the touch of a button. The first installation we did was a paediatric consult room. The pane stayed clear while the parent sat down, then frosted for the examination. It was the only privacy mechanism that did not feel clinical.',
+      'It is not a curtain replacement. It needs power, it needs a film between two laminated layers, and the frosted state is opaque to silhouette but not to colour. Used well, it is the quietest room divider you can specify. Used everywhere, it is a gimmick.'
+    ]
+  },
+  'visit': {
+    title: 'A morning in the Jebel Ali workshop.',
+    dek: 'Edge polishing, mitre cuts and the smell of fresh aluminium swarf. What happens between the drawing and the install.',
+    cat: 'Studio', date: 'Nov 04, 2025', read: '4 min',
+    img: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1600&q=80',
+    body: [
+      'Visitors usually expect a factory and find a studio. The polishing line is at the back. The CNC mitre saws are in the middle. The drawing tables, the model bench, and a small library of profile samples are at the front, by the windows.',
+      'We invite every client through at least once before fabrication begins. It is the fastest way to settle the questions a render cannot answer.'
+    ]
+  }
+};
+
+const PROJECTS_DATA = [
+  { id:1, title:'Marina Tower Façade', cat:'commercial', tag:'Curtain Wall', year:'2025', img:'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1600&q=80', span:7 },
+  { id:2, title:'Emirates Hills Villa', cat:'residential', tag:'Sliding Glass', year:'2025', img:'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80', span:5 },
+  { id:3, title:'Spiral Balustrade', cat:'residential', tag:'Frameless', year:'2024', img:'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1600&q=80', span:5 },
+  { id:4, title:'DIFC Banking Suite', cat:'commercial', tag:'Interior', year:'2024', img:'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1600&q=80', span:7 },
+  { id:5, title:'Al Barari Skylight', cat:'residential', tag:'Roof Glazing', year:'2024', img:'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80', span:6 },
+  { id:6, title:'City Walk Boutique', cat:'commercial', tag:'Shopfront', year:'2024', img:'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=1600&q=80', span:6 },
+  { id:7, title:'Palm Jumeirah Pergola', cat:'residential', tag:'Pergola', year:'2023', img:'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1600&q=80', span:6 },
+  { id:8, title:'Business Bay Façade', cat:'commercial', tag:'Curtain Wall', year:'2023', img:'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&q=80', span:6 },
+  { id:9, title:'Private Spa, Jumeirah', cat:'residential', tag:'Bespoke', year:'2023', img:'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1600&q=80', span:12 }
+];
+
+// ============ NAVIGATION ============
+let currentPage = 'home';
+
+function showPage(id) {
+  if (id === currentPage) return;
+  const labels = {home:'Home',about:'About',services:'Services',projects:'Projects',journal:'Journal',contact:'Contact'};
+  const wipe = document.getElementById('pageWipe');
+  const wipeText = document.getElementById('pageWipeText');
+  wipeText.innerHTML = '<em>' + (labels[id]||'') + '</em>';
+  wipe.classList.add('in');
+  setTimeout(() => {
+    // Hide current
+    document.getElementById('page-'+currentPage).style.display = 'none';
+    // Show new
+    const newPage = document.getElementById('page-'+id);
+    newPage.style.display = '';
+    // Reset all reveals on the new page
+    newPage.querySelectorAll('.reveal').forEach(el => { el.classList.remove('in'); });
+    currentPage = id;
+    window.scrollTo({top: 0, behavior: 'instant'});
+    // Update nav links
+    document.querySelectorAll('.nav-link').forEach(a => {
+      a.classList.toggle('active', a.dataset.page === id);
+    });
+    document.querySelectorAll('.mobile-nav a[data-page]').forEach(a => {
+      a.classList.toggle('active', a.dataset.page === id);
+    });
+    // Trigger reveals
+    setTimeout(() => { initReveal(); initStatCounters(); }, 80);
+    // Page-specific init
+    if (id === 'projects') renderProjects('all');
+  }, 540);
+  setTimeout(() => { wipe.classList.remove('in'); }, 1300);
+}
+
+// ============ MOBILE MENU ============
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mobileNav = document.getElementById('mobileNav');
+
+mobileMenuBtn.addEventListener('click', () => {
+  mobileMenuBtn.classList.toggle('open');
+  mobileNav.classList.toggle('open');
+  document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+});
+
+function closeMobileMenu() {
+  mobileMenuBtn.classList.remove('open');
+  mobileNav.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ============ NAV SCROLL ============
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 30);
+}, { passive: true });
+
+// ============ GST CLOCK ============
+function updateClock() {
+  const d = new Date();
+  const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+  const gst = new Date(utc + 4 * 3600000);
+  const hh = String(gst.getHours()).padStart(2,'0');
+  const mm = String(gst.getMinutes()).padStart(2,'0');
+  const el = document.getElementById('gst-time');
+  if (el) el.textContent = hh + ':' + mm + ' GST';
+}
+updateClock();
+setInterval(updateClock, 30000);
+
+// ============ REVEAL ON SCROLL ============
+function initReveal() {
+  const els = document.querySelectorAll('.reveal:not(.in)');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  els.forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) { el.classList.add('in'); }
+    else { io.observe(el); }
+  });
+}
+initReveal();
+
+// ============ STAT COUNTERS ============
+function animateStatNum(el) {
+  const to = parseInt(el.dataset.to);
+  const plus = el.dataset.plus !== 'false';
+  const suffix = el.dataset.suffix || '';
+  const span = el.querySelector('span');
+  const dur = 1800;
+  const start = performance.now();
+  const tick = (now) => {
+    const t = Math.min(1, (now - start) / dur);
+    const eased = 1 - Math.pow(1-t, 3);
+    const n = Math.round(to * eased);
+    span.textContent = n.toLocaleString();
+    el.innerHTML = span.outerHTML + suffix + (plus ? '<span style="font-size:0.5em;opacity:0.7;vertical-align:top;font-style:normal;">+</span>' : '');
+    if (t < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+
+function initStatCounters() {
+  const els = document.querySelectorAll('.stat-num:not([data-counted])');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.dataset.counted = '1';
+        animateStatNum(e.target);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  els.forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight) { el.dataset.counted='1'; animateStatNum(el); }
+    else { io.observe(el); }
+  });
+}
+initStatCounters();
+
+// ============ PROJECTS FILTER ============
+function renderProjects(filter) {
+  const grid = document.getElementById('projects-grid');
+  if (!grid) return;
+  const data = filter === 'all' ? PROJECTS_DATA : PROJECTS_DATA.filter(p => p.cat === filter);
+  grid.innerHTML = data.map((p,i) => `
+    <div class="project-card span-${p.span} reveal reveal-delay-${(i%3)+1}">
+      <div class="project-img" style="background-image:url('${p.img}')"></div>
+      <div class="project-overlay"></div>
+      <div class="project-info">
+        <div>
+          <div class="title">${p.title}</div>
+          <div class="meta">${p.tag} · ${p.year}</div>
+        </div>
+        <span class="tag">${p.cat}</span>
+      </div>
+    </div>
+  `).join('');
+  setTimeout(initReveal, 50);
+}
+
+function filterProjects(filter, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderProjects(filter);
+}
+
+// Init projects if on that page
+if (currentPage === 'projects') renderProjects('all');
+
+// ============ JOURNAL POSTS ============
+function openPost(id) {
+  const p = POSTS[id];
+  if (!p) return;
+  document.getElementById('post-hero-img').style.backgroundImage = `url('${p.img}')`;
+  const dotHtml = '<i style="display:inline-block;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.6);"></i>';
+  document.getElementById('post-hero-img').innerHTML = `
+    <div class="post-hero-meta">
+      <span>${p.cat}</span>${dotHtml}<span>${p.date}</span>${dotHtml}<span>${p.read} read</span>
+    </div>
+  `;
+  document.getElementById('post-hero-img').style.backgroundImage = `url('${p.img}')`;
+  document.getElementById('post-body').innerHTML = `
+    <h1>${p.title}</h1>
+    <p class="post-dek"><em>${p.dek}</em></p>
+    ${p.body.map(para => `<p class="post-para">${para}</p>`).join('')}
+    <div class="post-sign">— The Studio</div>
+  `;
+  const overlay = document.getElementById('post-overlay');
+  overlay.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closePost() {
+  document.getElementById('post-overlay').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closePost();
+});
+
+// ============ CONTACT FORM ============
+function submitForm() {
+  const wrap = document.getElementById('contact-form-wrap');
+  wrap.innerHTML = `
+    <div style="text-align:center;padding:40px 20px;">
+      <div style="width:64px;height:64px;margin:0 auto 24px;border-radius:50%;background:var(--gold);display:grid;place-items:center;color:var(--ink);font-size:28px;">✓</div>
+      <h3 style="font-size:36px;margin-bottom:12px;font-family:var(--serif);font-weight:300;">Received.</h3>
+      <p style="color:var(--ink-soft);max-width:360px;margin:0 auto;font-family:var(--serif);font-size:18px;">
+        Thank you. A member of the studio will come back within one working day.
+      </p>
+    </div>
+  `;
+}
+
+// ============ KEYBOARD SHORTCUTS ============
+const pageKeys = {1:'home',2:'about',3:'services',4:'projects',5:'journal',6:'contact'};
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  const pg = pageKeys[e.key];
+  if (pg) showPage(pg);
+});
+</script>
+</body>
+</html>
